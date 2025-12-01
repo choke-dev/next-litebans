@@ -1,11 +1,10 @@
 export const siteConfig = {
-  title: "Next Litebans",
+  title: "Shack SMP",
   logo: "/logo.webp",
   favicon: "/logo.webp",
   languages: {
     available: [
       "en",
-      "es",
     ],
     default: "en",
   },
@@ -16,11 +15,11 @@ export const siteConfig = {
     body: "/console-body.webp",
     bust: "/console-bust.webp",
   },
-  defaultPlayerLookup: "YoSoyVilla",
+  defaultPlayerLookup: "AspectsXII",
   // When enabled, body and bust images will show a steve skin
   bedrock: {
-    enabled: false,
-    prefix: "BP_",
+    enabled: true,
+    prefix: ".",
   },
   openGraph: {
     dateFormat: "yyyy-MM-dd hh:mm:ss",
