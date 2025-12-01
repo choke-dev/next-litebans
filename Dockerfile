@@ -5,7 +5,7 @@
 FROM node:20-alpine AS deps
 
 # Install libc6-compat for Alpine compatibility with native modules
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat openssl
 
 WORKDIR /app
 
@@ -56,20 +56,16 @@ FROM node:20-alpine AS runner
 
 WORKDIR /app
 
-
 # Disable Next.js telemetry in production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Create non-root user for security
 # Running as non-root prevents privilege escalation attacks
 RUN addgroup --system --gid 1001 nodejs && \
-adduser --system --uid 1001 nextjs
+    adduser --system --uid 1001 nextjs
 
 # Copy necessary files from builder stage
 # Only copy what's needed for production runtime
-
-# Copy deps
-COPY --from=deps /app/node_modules ./node_modules
 
 # Copy package files
 COPY --from=builder /app/package.json ./package.json
